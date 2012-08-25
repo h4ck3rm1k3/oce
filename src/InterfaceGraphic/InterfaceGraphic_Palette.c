@@ -26,6 +26,7 @@ int _a_horreur_du_vide_a_la_compilation;
 #else 
 
 #define STRICT
+#include <Standard_Macro.hxx>
 #include <windows.h>
 
 #pragma comment( lib, "user32.lib" )
@@ -105,7 +106,7 @@ static COLORREF s_sysPalBW[ NB_STATIC_COLORS ] = {
 static BOOL     s_sysUse;
 static COLORREF s_sysPal[ NB_STATIC_COLORS ];
 
-__declspec( dllexport ) long InterfaceGraphic_RealizePalette ( HDC hdc, HPALETTE hPal, BOOL fBkg, BOOL fUseStatic ) {
+Standard_EXPORTEXTERN long InterfaceGraphic_RealizePalette ( HDC hdc, HPALETTE hPal, BOOL fBkg, BOOL fUseStatic ) {
 
  int i;
  long retVal = 0;

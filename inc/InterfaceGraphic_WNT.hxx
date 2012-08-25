@@ -20,6 +20,7 @@
 # define __INTERFACE_GRAPHIC_WNT_HXX
 
 #ifdef WNT
+# include <Standard_Macro.hxx>
 # include <windows.h>
 # ifdef DrawText
 #  undef DrawText
@@ -76,15 +77,8 @@ typedef struct font_data {
 
 } FONT_DATA;
 
-#ifdef __cplusplus
-extern "C" {
-#endif  /* __cplusplus */
+Standard_IMPORTC long InterfaceGraphic_RealizePalette ( HDC, HPALETTE, BOOL, BOOL );
 
-  __declspec( dllimport ) long InterfaceGraphic_RealizePalette ( HDC, HPALETTE, BOOL, BOOL );
-
-#ifdef __cplusplus
-}
-#endif  /* __cplusplus */
 #endif //WNT
 
 #endif  /* __INTERFACE_GRAPHIC_WNT_HXX */
