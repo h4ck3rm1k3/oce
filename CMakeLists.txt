@@ -19,6 +19,10 @@
 
 PROJECT(OCE)
 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wall -I/home/h4ck3rm1k3/install/ -save-temps")
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -Wall -I/home/h4ck3rm1k3/install/ -save-temps")
+SET( ${PROJECT_NAME}_INSTALL_PREFIX  "/home/h4ck3rm1k3/install/")
+
 SET(OCE_VERSION_MAJOR 0)
 SET(OCE_VERSION_MINOR 10)
 # OCE_VERSION_PATCH is used for bugfixes releases only
