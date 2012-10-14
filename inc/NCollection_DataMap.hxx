@@ -173,9 +173,13 @@ template < class TheKeyType,
     DataMapNode** newdata = NULL;
     DataMapNode** dummy   = NULL;
     Standard_Integer newBuck;
+
+    NCollection_ListNode** newdata1=(NCollection_ListNode**)newdata;
+    NCollection_ListNode** dummy1=(NCollection_ListNode**)dummy;
+
     if (BeginResize (N, newBuck, 
-                     (NCollection_ListNode**&)newdata, 
-                     (NCollection_ListNode**&)dummy,
+                     newdata1, 
+                     dummy1,
                      this->myAllocator)) 
     {
       if (myData1) 
@@ -192,16 +196,18 @@ template < class TheKeyType,
             {
               k = Hasher::HashCode(p->Key(),newBuck);
               q = (DataMapNode*) p->Next();
-              p->Next() = newdata[k];
-              newdata[k] = p;
+              p->Next() = newdata1[k];
+              newdata1[k] = p;
               p = q;
             }
           }
         }
       }
+      //      NCollection_ListNode** newdata1=(NCollection_ListNode**)newdata;
+      //      NCollection_ListNode** dummy1=(NCollection_ListNode**)dummy;      
       EndResize(N,newBuck,
-                (NCollection_ListNode**&)newdata,
-                (NCollection_ListNode**&)dummy,
+		newdata1,
+		dummy1,
                 this->myAllocator);
     }
   }

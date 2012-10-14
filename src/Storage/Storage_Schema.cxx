@@ -74,7 +74,8 @@ typedef NCollection_DataMap <TCollection_AsciiString,
 //
 Storage_Bucket::~Storage_Bucket()
 {
-  Standard::Free((Standard_Address&)mySpace);
+  Standard_Address a= mySpace;
+  Standard::Free(a);
   mySpace = 0L;
   mySpaceSize = 0;
   Clear();
@@ -154,7 +155,8 @@ Storage_BucketOfPersistent::~Storage_BucketOfPersistent()
 {
   Clear();
   delete myBuckets[0];
-  Standard::Free((Standard_Address&)myBuckets);
+  Standard_Address a =myBuckets;
+  Standard::Free(a);
   myBuckets = 0L;
 }
 
@@ -195,7 +197,8 @@ void Storage_BucketOfPersistent::Append(const Handle(Standard_Persistent)& sp)
 
   if (myNumberOfBucket > myNumberOfBucketAllocated) {
     Standard_Size e = sizeof(Storage_Bucket*) * myNumberOfBucketAllocated;
-    myBuckets =  (Storage_Bucket**)Standard::Reallocate((Standard_Address&)myBuckets, e * 2);
+    Standard_Address a = myBuckets;
+    myBuckets =  (Storage_Bucket**)Standard::Reallocate(a, e * 2);
     myNumberOfBucketAllocated *= 2;
   }
 

@@ -71,7 +71,12 @@ inline Standard_Boolean TCollection_Array1::IsAllocated () const
 inline const Array1Item& TCollection_Array1::Value
 (const Standard_Integer Index) const
 {
-  Standard_OutOfRange_Raise_if((Index < myLowerBound || Index > myUpperBound),NULL);
+
+  if((Index < myLowerBound || Index > myUpperBound))	{
+    throw Standard_OutOfRange();
+  }
+
+  //Standard_OutOfRange_Raise_if((Index < myLowerBound || Index > myUpperBound),NULL);
   return ((Array1Item *)myStart)[Index];
 }
 
