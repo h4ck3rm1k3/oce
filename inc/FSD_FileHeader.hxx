@@ -103,7 +103,9 @@ inline Standard_ShortReal InverseShortReal (const Standard_ShortReal theValue)
 {
   Standard_ShortReal aResult;
   Standard_Integer *i = (Standard_Integer*) &aResult;
-  *i = InverseInt (*(Standard_Integer*) &theValue);
+  Standard_ShortReal convertedValue=theValue;
+  Standard_Integer convertedInt=convertedValue;
+  *i = InverseInt (convertedInt);
   return aResult;
 }
 
