@@ -48,7 +48,15 @@ Standard_Integer Contap_HCurve2dToolGen::NbSamples (const CurveGen& C,
       nbs/= U1-U0;
       if(nbs < 2.0) nbs = 2.;
       break;
-  }
+
+case GeomAbs_Circle:
+case GeomAbs_Ellipse:
+case GeomAbs_Hyperbola:
+case GeomAbs_Parabola:
+case GeomAbs_OtherCurve:
+break;
+
+}
   if (nbs>50.)
     nbs = 50.;
   return((Standard_Integer)nbs);

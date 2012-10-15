@@ -249,7 +249,9 @@ static void GetOrientationVOnE(const TopoDS_Shape& V,
 	if (EEori == TopAbs_REVERSED) d1EE.Reverse();
 
 	Standard_Real cross = d1E.Crossed(d1EE);
-	TopAbs_Orientation oVE,oVEE;
+
+	TopAbs_Orientation oVE=TopAbs_FORWARD;
+	TopAbs_Orientation oVEE=TopAbs_FORWARD;
 
 	// modified by NIZHNY-MKK  Fri May 30 10:17:10 2003.BEGIN
 	GetOrientationVOnE(V,E,EE,oVE,oVEE);

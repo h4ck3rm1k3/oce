@@ -39,7 +39,7 @@
 #include <limits.h>
 #include <time.h>
 #include <OSD_PerfMeter.h>
-
+char *strdup(const char *str); // forward for gcc
 /* ------- Definitions for Windows compiler -------- */
 #ifdef WNT
 #define STRICT

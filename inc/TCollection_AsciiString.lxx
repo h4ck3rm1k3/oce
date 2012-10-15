@@ -127,7 +127,9 @@ inline TCollection_AsciiString TCollection_AsciiString::SubString(const Standard
 							   const Standard_Integer ToIndex) const
 {
 
-  if (ToIndex > mylength || FromIndex <= 0 || FromIndex > ToIndex ) Standard_OutOfRange::Raise();
+  if ( ToIndex > mylength  ) Standard_OutOfRange::Raise();
+  if ( FromIndex <= 0  ) Standard_OutOfRange::Raise();
+  if ( FromIndex > ToIndex ) Standard_OutOfRange::Raise();
 
   return TCollection_AsciiString( &mystring [ FromIndex - 1 ] ,
                                   ToIndex - FromIndex + 1 ) ;

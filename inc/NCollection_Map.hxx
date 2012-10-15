@@ -173,12 +173,12 @@ template < class TheKeyType,
   //! ReSize
   void ReSize (const Standard_Integer N)
   {
-    MapNode** newdata = 0L;
-    MapNode** dummy = 0L;
+    NCollection_ListNode** newdata = 0L;
+    NCollection_ListNode** dummy = 0L;
     Standard_Integer newBuck;
     if (BeginResize (N, newBuck, 
-                     (NCollection_ListNode**&)newdata, 
-                     (NCollection_ListNode**&)dummy,
+                     newdata, 
+                     dummy,
                      this->myAllocator)) 
     {
       if (myData1) 
@@ -203,8 +203,8 @@ template < class TheKeyType,
         }
       }
       EndResize(N,newBuck,
-                (NCollection_ListNode**&)newdata,
-                (NCollection_ListNode**&)dummy,
+                newdata,
+                dummy,
                 this->myAllocator);
     }
   }

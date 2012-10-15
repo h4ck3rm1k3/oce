@@ -53,32 +53,38 @@ void OpenGl_PrimitiveArray::clearMemoryOwn() const
 {
   if (myPArray->bufferVBO[VBOEdges] != 0)
   {
-    Standard::Free ((Standard_Address& )myPArray->edges);
+    Standard_Address a =myPArray->edges;
+    Standard::Free (a);
     myPArray->edges = NULL;
   }
   if (myPArray->bufferVBO[VBOVertices] != 0)
   {
-    Standard::Free ((Standard_Address& )myPArray->vertices);
+    Standard_Address a =myPArray->vertices;
+    Standard::Free (a);
     myPArray->vertices = NULL;
   }
   if (myPArray->bufferVBO[VBOVcolours] != 0)
   {
-    Standard::Free ((Standard_Address& )myPArray->vcolours);
+    Standard_Address a =myPArray->vcolours;
+    Standard::Free (a);
     myPArray->vcolours = NULL;
   }
   if (myPArray->bufferVBO[VBOVnormals] != 0)
   {
-    Standard::Free ((Standard_Address& )myPArray->vnormals);
+    Standard_Address a=myPArray->vnormals;
+    Standard::Free (a);
     myPArray->vnormals = NULL;
   }
   if (myPArray->bufferVBO[VBOVtexels] != 0)
   {
-    Standard::Free ((Standard_Address& )myPArray->vtexels);
+    Standard_Address a =myPArray->vtexels;
+    Standard::Free (a);
     myPArray->vtexels = NULL;
   }
   if (myPArray->edge_vis != NULL) /// ????
   {
-    Standard::Free ((Standard_Address& )myPArray->edge_vis);
+    Standard_Address a =myPArray->edge_vis;
+    Standard::Free (a);
     myPArray->edge_vis = NULL;
   }
 }
@@ -313,6 +319,10 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
     case TelTriangleFansArrayType:
       glColor3fv (theInteriorColour->rgb);
       break;
+  case TelUnknownArrayType:
+      // unknown TODO
+      break;
+
   }
 
   // Temporarily disable environment mapping
@@ -1675,6 +1685,11 @@ OpenGl_PrimitiveArray::OpenGl_PrimitiveArray (CALL_DEF_PARRAY* thePArray)
     case TelTriangleFansArrayType:
       myDrawMode = GL_TRIANGLE_FAN;
       break;
+
+  case TelUnknownArrayType:
+      // unknown TODO
+      break;
+
   }
 }
 
@@ -1799,5 +1814,17 @@ void OpenGl_PrimitiveArray::Render (const Handle(OpenGl_Workspace)& theWorkspace
       if (theWorkspace->NamedStatus & OPENGL_NS_TEXTURE)
         EnableTexture();
     }
+
+    break;
+    
+    case TelUnknownArrayType:
+    case TelPolygonsArrayType:
+    case TelTrianglesArrayType:
+    case TelQuadranglesArrayType:
+    case TelTriangleStripsArrayType:
+    case TelQuadrangleStripsArrayType:
+    case TelTriangleFansArrayType:
+      // unhandled
+    break;
   }
 }

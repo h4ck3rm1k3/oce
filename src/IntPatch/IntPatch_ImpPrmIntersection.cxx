@@ -375,6 +375,18 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U1<(U1p-1.5*M_PI)) U1+=M_PI+M_PI;
       while(U1>(U1p+1.5*M_PI)) U1-=M_PI+M_PI;
+
+      break;
+      
+  case GeomAbs_Plane:
+  case GeomAbs_BezierSurface:
+  case GeomAbs_BSplineSurface:
+  case GeomAbs_SurfaceOfRevolution:
+  case GeomAbs_SurfaceOfExtrusion:
+  case GeomAbs_OffsetSurface:
+  case GeomAbs_OtherSurface:
+    break;
+
   }
   switch(typeS2)
   { 
@@ -386,6 +398,18 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U2<(U2p-1.5*M_PI)) U2+=M_PI+M_PI;
       while(U2>(U2p+1.5*M_PI)) U2-=M_PI+M_PI;
+
+      break;
+  case GeomAbs_Plane:
+  case GeomAbs_BezierSurface:
+  case GeomAbs_BSplineSurface: 
+  case GeomAbs_SurfaceOfRevolution :
+  case GeomAbs_SurfaceOfExtrusion:
+  case GeomAbs_OffsetSurface :
+  case GeomAbs_OtherSurface:
+    //TOD unhandled
+    break ;
+
   }
   pt.SetParameters(U1,V1,U2,V2);
 }

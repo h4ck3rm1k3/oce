@@ -77,6 +77,14 @@ HLRBRep_Curve::Parameter2d (const Standard_Real P3d) const
 
     case GeomAbs_Ellipse:
       return P3d + myOX;
+      break;
+  case GeomAbs_Circle :
+  case GeomAbs_Hyperbola :
+  case GeomAbs_Parabola:
+  case GeomAbs_BezierCurve:
+  case GeomAbs_OtherCurve : 
+    break;
+
   }
   return P3d;
 }

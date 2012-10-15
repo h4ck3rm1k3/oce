@@ -59,6 +59,11 @@ public:
   //!  Deallocates memory blocks <br>
 //!           aStorage - previously allocated memory block to be freed <br>
   Standard_EXPORT   static  void Free(Standard_Address& aStorage) ;
+  template <class T> Standard_EXPORT   static  void Free(T aStorage) 
+  {
+    Standard_Address a=aStorage;
+    Free(a);    
+  }
   //!  Reallocates memory blocks <br>
 //!           aStorage - previously allocated memory block <br>
 //!           aNewSize - new size in bytes <br>

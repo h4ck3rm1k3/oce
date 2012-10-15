@@ -51,7 +51,12 @@ DWORD static _TestSwapDWORD (DWORD __dw)
 }
 
 #define STGMGR_ALLOC(size)    Standard::Allocate(size)
-#define STGMGR_FREE(buf,size) Standard::Free((void*&)buf)
+//#define STGMGR_FREE(buf,size) 
+template <class T> inline void STGMGR_FREE(T buf , int size) {
+  void* buf1=buf; 
+  Standard::Free(buf1);
+}
+
 #define BPIXEL                ((BYTE *) myData)
 #define DWPIXEL               ((DWORD*) myData)
 
@@ -176,7 +181,7 @@ Standard_Boolean AlienImage_BMPAlienData::Read (OSD_File& file)
     // Note, that there can be less then ncolors colors.
     isize = ncolors * sizeof (RGBQUAD);
 
-    file.Read ((void*&)pColors256, isize, nBytes);
+    file.Read (pColors256, isize, nBytes);
     if (file.Failed() || nBytes != isize) {
       cout << "AlienImage_BMPAlienData::Read() : Reading ColorMap."
            << endl << flush;
@@ -244,7 +249,7 @@ Standard_Boolean AlienImage_BMPAlienData::Read (OSD_File& file)
   pbData = pData;
 
   file.Seek (i, OSD_FromBeginning);
-  file.Read ((void*&)pData, iDataSize, nBytes);
+  file.Read (pData, iDataSize, nBytes);
   if (file.Failed () || nBytes != iDataSize) {
     cout << "AlienImage_BMPAlienData::Read() : Image data."
          << endl << flush;

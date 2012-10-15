@@ -92,7 +92,7 @@ const static Standard_Integer theStackSize=20;
   mySizeOfArrayOfBits = NewSize;
 
   if (myStack != 0L) {
-    Standard::Free((Standard_Address&)myStack);
+    Standard::Free(myStack);
   }
   mySizeOfStack = theStackSize;
   myStack = (Standard_Integer*)Standard::Allocate(theStackSize*sizeof(Standard_Integer));

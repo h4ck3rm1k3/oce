@@ -337,7 +337,7 @@ void TCollection_ExtendedString::AssignCat
     Standard_ExtString sother = other.mystring;
     Standard_Integer newlength = mylength +otherlength; 
     if (mystring) {
-        mystring = Reallocate((void*&)mystring,
+        mystring = Reallocate(mystring,
                                                              ROUNDMEM((newlength+1)*2));
 #if OptJr
 //      if ( ((long ) ( &mystring[ mylength ] ) & 3) == 0 ) {
@@ -423,7 +423,7 @@ void TCollection_ExtendedString::ChangeAll(const Standard_ExtCharacter aChar,
 // ----------------------------------------------------------------------------
 void TCollection_ExtendedString::Clear()
 {
-  if (mystring) Standard::Free((void*&)mystring);
+  if (mystring) Standard::Free(mystring);
 //  mystring = 0L;
   mylength = 0;
   mystring = Allocate((mylength+1)*2);
@@ -439,7 +439,7 @@ void TCollection_ExtendedString::Copy (const TCollection_ExtendedString& fromwhe
   if (fromwhere.mystring) {
     Standard_Integer newlength = fromwhere.mylength;
     if (mystring) {
-      mystring = Reallocate((void*&)mystring, ROUNDMEM(( newlength + 1)*2 ));
+      mystring = Reallocate(mystring, ROUNDMEM(( newlength + 1)*2 ));
     }
     else {
       mystring = Allocate(ROUNDMEM((newlength+1)*2));
@@ -465,7 +465,7 @@ void TCollection_ExtendedString::Copy (const TCollection_ExtendedString& fromwhe
 // ----------------------------------------------------------------------------
 void TCollection_ExtendedString::Destroy()
 {
-  if (mystring) Standard::Free((void*&)mystring);
+  if (mystring) Standard::Free(mystring);
   mystring = 0L;
 }
 
@@ -483,7 +483,7 @@ void TCollection_ExtendedString::Insert(const Standard_Integer where,
                                "Parameter where is negative");
 
   if (mystring) {
-      mystring = Reallocate((void*&)mystring,
+      mystring = Reallocate(mystring,
                                                            (mylength+2)*2);
   }
   else {
@@ -512,7 +512,7 @@ void TCollection_ExtendedString::Insert(const Standard_Integer            where,
       
       if (mystring) {
           mystring = Reallocate(
-                                         (void*&)mystring,(newlength+1)*2);
+                                         mystring,(newlength+1)*2);
       }
       else {
         mystring = Allocate((newlength+1)*2);
@@ -860,7 +860,7 @@ void TCollection_ExtendedString::SetValue
     size += (where - 1);  
     if (size >= mylength){
       if (mystring) {
-        mystring = Reallocate ((void*&)mystring,(size+1)*2);
+        mystring = Reallocate (mystring,(size+1)*2);
       }
       else {
         mystring = Allocate((size+1)*2);
@@ -958,7 +958,7 @@ TCollection_ExtendedString TCollection_ExtendedString::Token
   
   if (i < whichone) {
     buftmp[0] = 0;
-    Standard::Free((void*&)buftmp);
+    Standard::Free(buftmp);
   }
   else {
     res.mystring = buftmp;

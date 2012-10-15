@@ -188,12 +188,12 @@ template < class TheKeyType,
   //! ReSize
   void ReSize (const Standard_Integer N)
   {
-    IndexedMapNode** ppNewData1 = NULL;
-    IndexedMapNode** ppNewData2 = NULL;
+    NCollection_ListNode ** ppNewData1 = NULL; //IndexedMapNode**
+    NCollection_ListNode ** ppNewData2 = NULL;
     Standard_Integer newBuck;
     if (BeginResize (N, newBuck, 
-                     (NCollection_ListNode**&)ppNewData1, 
-                     (NCollection_ListNode**&)ppNewData2,
+                     ppNewData1, 
+                     ppNewData2,
                      this->myAllocator)) 
     {
       if (myData1) 
@@ -214,7 +214,7 @@ template < class TheKeyType,
               if (p->Key2() > 0) 
               {
                 iK2 = ::HashCode (p->Key2(), newBuck);
-                p->Next2() = ppNewData2[iK2];
+                p->Next2() = (IndexedMapNode*)ppNewData2[iK2];
                 ppNewData2[iK2] = p;
               }
               p = q;
@@ -223,8 +223,8 @@ template < class TheKeyType,
         }
       }
       EndResize(N,newBuck,
-                (NCollection_ListNode**&)ppNewData1,
-                (NCollection_ListNode**&)ppNewData2,
+                ppNewData1,
+                ppNewData2,
                 this->myAllocator);
     }
   }

@@ -183,7 +183,7 @@ const static Standard_Integer AddedValue=20;
 	// (int)myListOfShapeAndInterferences);
   //modified by NIZNHY-PKV Wed Feb  2 12:31:31 2005t
   //
-  Standard::Free((Standard_Address&)myListOfShapeAndInterferences);
+  Standard::Free(myListOfShapeAndInterferences);
 }
 //===========================================================================
 //function : ShapeIndexMap
@@ -301,7 +301,7 @@ const static Standard_Integer AddedValue=20;
   }
 
   if (myLength>0) {
-    Standard::Free((Standard_Address&) myListOfShapeAndInterferences);
+    Standard::Free( myListOfShapeAndInterferences);
   }
 
   myLength = NewLength;

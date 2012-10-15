@@ -110,6 +110,13 @@ public:
 //!          is less than Nbyte bytes. For this reason the output <br>
 //!          parameter Readbyte will contain the number of read bytes. <br>
   Standard_EXPORT     void Read(Standard_Address& Buffer,const Standard_Integer Nbyte,Standard_Integer& Readbyte) ;
+
+  template <class T> Standard_EXPORT     void Read(T& Buffer,const Standard_Integer Nbyte,Standard_Integer& Readbyte) 
+  {   
+    Standard_Address a=Buffer;
+    Read(a,Nbyte, Readbyte) ;
+  }
+
   //! Attempts to write Nbyte bytes from the AsciiString to the file <br>
 //!          associated to the object File. <br>
   Standard_EXPORT     void Write(const TCollection_AsciiString& Buffer,const Standard_Integer Nbyte) ;

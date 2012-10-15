@@ -330,7 +330,7 @@ void TCollection_AsciiString::AssignCat(const Standard_Character other)
 {
   if (other != '\0') {
     if (mystring) {
-      mystring = Reallocate((void*&)mystring,
+      mystring = Reallocate(mystring,
                                                         mylength+2);
     }
     else {
@@ -357,7 +357,7 @@ void TCollection_AsciiString::AssignCat(const Standard_CString other)
 #endif
       Standard_Integer newlength = mylength+otherlength;
       if (mystring) {
-          mystring = Reallocate((void*&)mystring,
+          mystring = Reallocate(mystring,
 							       ROUNDMEM(newlength+1));
 #if OptJr
         STRINGCAT( mystring , mylength , other , otherlength ) ;
@@ -395,7 +395,7 @@ void TCollection_AsciiString::AssignCat(const TCollection_AsciiString& other)
     Standard_CString sother = other.mystring;
     Standard_Integer newlength = mylength+otherlength;
     if (mystring) {
-        mystring = Reallocate((void*&)mystring,
+        mystring = Reallocate(mystring,
                                                            ROUNDMEM(newlength+1));
 #if OptJr
       STRINGCAT( mystring , mylength , sother , otherlength ) ;
@@ -468,7 +468,7 @@ void TCollection_AsciiString::ChangeAll(const Standard_Character aChar,
 // ----------------------------------------------------------------------------
 void TCollection_AsciiString::Clear()
 {
-  if (mystring) Standard::Free((void*&)mystring);
+  if (mystring) Standard::Free(mystring);
   mylength = 0;
   mystring = Allocate(mylength+1);
   mystring[mylength] = '\0';
@@ -489,7 +489,7 @@ void TCollection_AsciiString::Copy(const Standard_CString fromwhere)
 #endif
     if (mystring) {
       
-      mystring = Reallocate((void*&)mystring,
+      mystring = Reallocate(mystring,
 							ROUNDMEM(newlength+1));
      
     }
@@ -523,7 +523,7 @@ void TCollection_AsciiString::Copy(const TCollection_AsciiString& fromwhere)
     Standard_Integer newlength = fromwhere.mylength;
     if (mystring) {
       
-      mystring = Reallocate((void*&)mystring,
+      mystring = Reallocate(mystring,
 							ROUNDMEM(newlength+1));
       
     }
@@ -553,7 +553,7 @@ void TCollection_AsciiString::Copy(const TCollection_AsciiString& fromwhere)
 // ----------------------------------------------------------------------------
 void TCollection_AsciiString::Destroy()
 {
-  if (mystring) Standard::Free((void*&)mystring);
+  if (mystring) Standard::Free(mystring);
   mystring = 0L;
 }
 
@@ -613,7 +613,7 @@ void TCollection_AsciiString::Insert(const Standard_Integer where,
   if (mystring) {
 //    Standard_Integer length = *(int*)((long)mystring-8);
 //    if((mylength+1) >> 4 > length-1 >> 4)
-    mystring = Reallocate((void*&)mystring,
+    mystring = Reallocate(mystring,
                                                        mylength+2);
   }
   else {
@@ -647,7 +647,7 @@ void TCollection_AsciiString::Insert(const Standard_Integer where,
       if (mystring) {
 //      Standard_Integer length = *(int*)((long)mystring-8);
 //      if(newlength >> 4 > length-1 >> 4)
-        mystring = Reallocate((void*&)mystring,
+        mystring = Reallocate(mystring,
                                                            newlength+1);
       }
       else {
@@ -685,7 +685,7 @@ void TCollection_AsciiString::Insert(const Standard_Integer where,
       if (mystring) {
 //      Standard_Integer length = *(int*)((long)mystring-8);
 //      if(newlength >> 4 > length-1 >> 4)
-        mystring = Reallocate((void*&)mystring,
+        mystring = Reallocate(mystring,
                                                            newlength+1);
       }
       else {
@@ -1066,7 +1066,7 @@ void TCollection_AsciiString::LeftJustify(const Standard_Integer Width,
      if (mystring) {
 //       Standard_Integer length = *(int*)((long)mystring-8);
 //       if(Width >> 4 > length-1 >> 4)
-       mystring = Reallocate((void*&)mystring,
+       mystring = Reallocate(mystring,
                                                           Width+1);
      }
      else {
@@ -1188,7 +1188,7 @@ void TCollection_AsciiString::Read(Standard_IStream& astream)
  if (mystring) {
 //   Standard_Integer length = *(int*)((long)mystring-8);
 //   if(newlength >> 4 > length-1 >> 4)
-   mystring = Reallocate((void*&)mystring,
+   mystring = Reallocate(mystring,
                                                       ROUNDMEM(newlength+1));
  }
  else {
@@ -1311,7 +1311,7 @@ void TCollection_AsciiString::RightJustify(const Standard_Integer Width,
     if (mystring) {
 //      Standard_Integer length = *(int*)((long)mystring-8);
 //      if(Width >> 4 > length-1 >> 4)
-      mystring = Reallocate((void*&)mystring,
+      mystring = Reallocate(mystring,
                                                          Width+1);
     }
     else {
@@ -1464,7 +1464,7 @@ void TCollection_AsciiString::SetValue(const Standard_Integer where,
      if (mystring) {
 //       Standard_Integer length = *(int*)((long)mystring-8);
 //       if(size >> 4 > length-1 >> 4)
-       mystring = Reallocate((void*&)mystring,
+       mystring = Reallocate(mystring,
                                                           size+1);
      }
      else {
@@ -1496,7 +1496,7 @@ void TCollection_AsciiString::SetValue(const Standard_Integer where,
      if (mystring) {
 //       Standard_Integer length = *(int*)((long)mystring-8);
 //       if(size >> 4 > length-1 >> 4)
-       mystring = Reallocate((void*&)mystring,
+       mystring = Reallocate(mystring,
                                                           size+1);
      }
      else {
