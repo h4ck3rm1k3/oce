@@ -91,9 +91,10 @@ static int Standard_Atomic_Increment (volatile int* theValue)
 #endif
 }
 
+// static defined not used, make inline
 //! Decrements atomically integer variable pointed by theValue
 //! and returns resulting decremented value.
-static int Standard_Atomic_Decrement (volatile int* theValue)
+inline int Standard_Atomic_Decrement (volatile int* theValue)
 {
 #ifdef __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4
   // mordern g++ compiler (gcc4.4+)

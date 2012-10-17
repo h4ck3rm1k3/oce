@@ -7789,5 +7789,6 @@ mmjcobi_1_& AdvApp2Var_Data::Getmmjcobi()
 	    -6.3447289711637502796424532700377e-17, 
 	    -1.0284250949746758839876395691897e-18 
 	    };
-  return *((mmjcobi_1_*)&s_e_1);
+  static mmjcobi_1_* r= (mmjcobi_1_*)&s_e_1;
+  return *r;
 }

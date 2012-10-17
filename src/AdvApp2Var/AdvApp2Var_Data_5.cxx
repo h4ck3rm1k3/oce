@@ -4837,5 +4837,6 @@ mmapgs0_1_& AdvApp2Var_Data::Getmmapgs0()
 	    -.0407672808617546723713899270255496
   };
   
-    return *((mmapgs0_1_ *)&e_1);
+  static mmapgs0_1_ * r =  (mmapgs0_1_ *)&e_1;
+  return *r;
 }

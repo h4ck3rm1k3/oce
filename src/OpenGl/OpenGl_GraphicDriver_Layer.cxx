@@ -417,6 +417,9 @@ void OpenGl_GraphicDriver::Text (const Standard_CString AText, const Standard_Sh
         glColor3fv (TheLayerProp.Color.rgb);
       }
       break;
+    case Aspect_TODT_NORMAL:
+      // TODO
+      break;
     }
   }
 

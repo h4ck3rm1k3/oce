@@ -111,6 +111,12 @@ int  stript_score(stript* pstrip, int *plength);
 /*                                                                  */
 /********************************************************************/
 
+template <class T> inline  void Free3(T  aStorage) 
+{
+  Standard_Address a=aStorage;
+  Standard::Free(a);    
+}
+
 void Graphic3d_Strips :: STRIPT_INIT ( const Standard_Integer NBVERTICES,
 									   const TColStd_Array1OfInteger& TABTRIANGLES )  
 {
@@ -131,6 +137,7 @@ to index it in the edges array */
     int  tn[2];       /* neighbour triangles */
     int ivn[2];       /* index of third vertex of neighbour triangles */
   } edge;
+
 
   edge **edges;
   edge *cedge;
@@ -249,10 +256,10 @@ to index it in the edges array */
     while(edges[ivert] != NULL) {
       cedge = edges[ivert];
       edges[ivert] = cedge->next;
-      Standard::Free((void*&)cedge);
+      Standard::Free(cedge);
     }
   }
-  Standard::Free((void*&)edges);
+  Standard::Free(edges);
 }
 
 
@@ -306,7 +313,7 @@ void Graphic3d_Strips :: STRIPT_GET_STRIP ( Standard_Integer& NBTRIANGLES,
   {
     NBTRIANGLES = 0;
     current_stript.t = 0;
-    Standard::Free((void*&)trianglesptr);
+    Standard::Free(trianglesptr);
     return;
   }
 
@@ -890,10 +897,10 @@ to index it in the edges array */
     {
       cedge = edges[ivert];
       edges[ivert] = cedge->next;
-      Standard::Free((void*&)cedge);
+      Standard::Free2(cedge);
     }
   }
-  Standard::Free((void*&)edges);
+  Standard::Free2(edges);
 }
 
 
@@ -947,7 +954,7 @@ void Graphic3d_Strips :: STRIPQ_GET_STRIP ( Standard_Integer& NBQUAD,Standard_In
   {
     NBQUAD = 0;
     current_stripq.q = 0;
-    Standard::Free((void*&)quadranglesptr);
+    Standard::Free(quadranglesptr);
     return;
   }
   /* Now search the best strip from this quadrangle 

@@ -18,6 +18,8 @@
 # 8. From your IDE, open the generated makefile and run the compilation.
 
 PROJECT(OCE)
+SET(CMAKE_CXX_COMPILER "/opt/cfarm/release-4.5.1/bin/g++")
+SET(CMAKE_CC_COMPILER "/opt/cfarm/release-4.5.1/bin/gcc")
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wall -I/home/h4ck3rm1k3/install/ -save-temps")
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -Wall -I/home/h4ck3rm1k3/install/ -save-temps")

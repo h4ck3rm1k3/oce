@@ -239,7 +239,8 @@ void TDocStd_Document::Update(const Handle(CDM_Document)& /*aToDocument*/,
 			       const Standard_Integer aReferenceIdentifier,
 			       const Standard_Address aModifContext) 
 {
-  const TDocStd_Context CC = *((TDocStd_Context *)&aModifContext);
+  TDocStd_Context * p =(TDocStd_Context *)&aModifContext;
+  const TDocStd_Context CC = *p;
   if (CC.ModifiedReferences() || !IsUpToDate(aReferenceIdentifier)) {
     TCollection_AsciiString aDocEntry(aReferenceIdentifier);
     UpdateReferences(aDocEntry);

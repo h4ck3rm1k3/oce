@@ -59,7 +59,12 @@ public:
   //!  Deallocates memory blocks <br>
 //!           aStorage - previously allocated memory block to be freed <br>
   Standard_EXPORT   static  void Free(Standard_Address& aStorage) ;
-  template <class T> Standard_EXPORT   static  void Free(T aStorage) 
+  template <class T> Standard_EXPORT   static  void Free(T & aStorage) 
+  {
+    Standard_Address a=aStorage;
+    Free(a);    
+  }
+  template <class T> Standard_EXPORT   static  void Free2(T  aStorage) 
   {
     Standard_Address a=aStorage;
     Free(a);    

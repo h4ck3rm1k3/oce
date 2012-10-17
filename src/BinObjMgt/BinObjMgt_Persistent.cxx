@@ -1109,9 +1109,10 @@ void BinObjMgt_Persistent::inverseRealData
     if (aPrevPtr) {
       Standard_Integer aTmp;
       aTmp = InverseInt (*(Standard_Integer*)aPrevPtr);
-      *(Standard_Integer*)aPrevPtr = InverseInt (*(Standard_Integer*)aData);
-      *(Standard_Integer*)aData = aTmp;
-      ((Standard_Integer*&)aData)++;
+      Standard_Integer* p = (Standard_Integer*)aData;
+      *(Standard_Integer*)aPrevPtr = InverseInt (*p);
+      *p = aTmp;
+      (*p)++;
       aPrevPtr = 0;
     }
     for (Standard_Integer i=0; i < aLenInPiece / BP_REALSIZE; i++)

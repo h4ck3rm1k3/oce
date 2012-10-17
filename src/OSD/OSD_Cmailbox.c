@@ -113,7 +113,7 @@ int remove_sharedmemory (int * ,char *    );
 /                            - Arm again the signal handler
 */
 
-
+extern int kill (__pid_t __pid, int __sig);
 
 #define MAX_BOX    256          /* Maximum number of mail boxes */
 

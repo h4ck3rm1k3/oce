@@ -171,16 +171,16 @@ void IntPatch_Point::Dump() const {
 	 (double)(pt.Value().Y()),
 	 (double)(pt.Value().Z()),
 	 (double)u1,(double)v1,(double)u2,(double)v2,(double)para);
-  if(onS1)    { printf("*OnS1*  par=%15.10f arc1=%10lu",(double)prm1,
-		       *((long unsigned *)(((Handle_Standard_Transient *)(&arcS1))))
-		       );  }
-  if(vtxonS1) { printf(" *Vtx1*  vtx1=%10lu",
-		       *((long unsigned *)(((Handle_Standard_Transient *)(&vS1))))); } 
+
+  long unsigned * pl = (long unsigned *)(((Handle_Standard_Transient *)(&arcS1)));
+  if(onS1)    { printf("*OnS1*  par=%15.10f arc1=%10lu",(double)prm1,*pl);  }
+  pl = (long unsigned *)(((Handle_Standard_Transient *)(&vS1)));
+  if(vtxonS1) { printf(" *Vtx1*  vtx1=%10lu",*pl); } 
   if(onS1 || vtxonS1) printf("\n");
-  if(onS2)    { printf("*OnS2*  par=%15.10f arc2=%10lu",(double)prm2,
-		       *((long unsigned *)(((Handle_Standard_Transient *)(&arcS2))))); } 
-  if(vtxonS2) { printf(" *Vtx2*  vtx2=%10lu",
-		       *((long unsigned *)(((Handle_Standard_Transient *)(&vS2))))); } 
+  pl = (long unsigned *)(((Handle_Standard_Transient *)(&arcS2)));
+  if(onS2)    { printf("*OnS2*  par=%15.10f arc2=%10lu",(double)prm2,*pl); } 
+  pl = (long unsigned *)(((Handle_Standard_Transient *)(&vS2)));
+  if(vtxonS2) { printf(" *Vtx2*  vtx2=%10lu",*pl); } 
   
 #else // debug mode
   printf("P(%15.10lf,%15.10lf,%15.10lf) UV1(%15.10lf,%15.10lf)  UV2(%15.10lf,%15.10lf) (Para:%15.10lf)\n",

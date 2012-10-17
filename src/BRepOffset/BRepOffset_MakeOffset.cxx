@@ -878,7 +878,7 @@ static void TrimEdge (TopoDS_Edge&                  NE,
   Standard_Real aSameParTol = Precision::Confusion();
   
   TopoDS_Vertex V1,V2;
-  Standard_Real U;
+  Standard_Real U=0.0;
   Standard_Real UMin =  Precision::Infinite();
   Standard_Real UMax = -UMin;
 

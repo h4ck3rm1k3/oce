@@ -345,7 +345,7 @@ static Standard_Boolean iopen( 	OSD_File &File,
 			return( Standard_False ) ;
   		}
 	} else {//--------------------------READ------------------------
-		File.Read( ( Standard_Address& )image, calsize, bblcount ) ;
+		File.Read( image, calsize, bblcount ) ;
   		if ( File.Failed() || 
 		     ( bblcount != calsize ) ) {
 #ifdef TRACE
@@ -390,7 +390,7 @@ static Standard_Boolean iopen( 	OSD_File &File,
 	    } else {
 		tablesize = image->ysize*image->zsize*sizeof(int);
 		File.Seek( 512, OSD_FromBeginning ) ;
-		File.Read( (Standard_Address&) image->rowstart,tablesize, bblcount);
+		File.Read(  image->rowstart,tablesize, bblcount);
   		if ( File.Failed() || ( bblcount != tablesize ) ) {
 			// ERROR
 		    	i_errhdlr("iopen: error on read of rowstart\n");
@@ -399,7 +399,7 @@ static Standard_Boolean iopen( 	OSD_File &File,
 
 		if(image->dorev)
 		    cvtlongs((int *)image->rowstart,tablesize);
-		File.Read( (Standard_Address&) image->rowsize,tablesize, bblcount);
+		File.Read( image->rowsize,tablesize, bblcount);
   		if ( File.Failed() || ( bblcount != tablesize ) ) {
 			// ERROR
 		    	i_errhdlr("iopen: error on read of rowsize\n");
@@ -558,7 +558,7 @@ static int img_read( OSD_File &File,
 				int bblcount )
 {
     int retval;
-    File.Read( (Standard_Address&)buffer,bblcount, retval ) ;
+    File.Read(buffer,bblcount, retval ) ;
     if(retval == bblcount && !File.Failed() ) 
 	image->offset += bblcount;
     else

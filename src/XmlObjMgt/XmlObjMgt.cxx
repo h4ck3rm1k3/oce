@@ -208,7 +208,7 @@ Standard_Boolean XmlObjMgt::GetTagEntryString
   }
   aTagEntryPtr[0] = '\0';
   theTagEntry = aTagEntry;
-  Standard::Free ((Standard_Address&)aTagEntry);
+  Standard::Free (aTagEntry);
   return Standard_True;
 }
 
@@ -263,7 +263,7 @@ void XmlObjMgt::SetTagEntryString (XmlObjMgt_DOMString&           theTarget,
   }
   * aTargetPtr = '\0';
   theTarget = aTarget;
-  Standard::Free ((Standard_Address&)aTarget);
+  Standard::Free (aTarget);
 }
 
 //=======================================================================

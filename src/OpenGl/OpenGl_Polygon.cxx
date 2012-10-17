@@ -566,7 +566,10 @@ OpenGl_Polygon::~OpenGl_Polygon ()
       for ( j = 0; j < myData.dsply->Value(i).tmesh_sequence.Length() ; j++ )
       {
         if ( myData.dsply->Value(i).tmesh_sequence(j) >= (void *)0xffff )
-          delete myData.dsply->Value(i).tmesh_sequence(j);
+	  {
+	    extra_vertex b = (extra_vertex) myData.dsply->Value(i).tmesh_sequence(j);
+	    delete b;
+	  }
       }
     }
 

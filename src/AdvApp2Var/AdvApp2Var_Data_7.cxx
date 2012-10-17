@@ -4318,5 +4318,8 @@ mmapgs2_1_& AdvApp2Var_Data::Getmmapgs2()
 	    .0408639610525922021174682189163711, 
 	    -.0408569535997322120997291328426552
   };
-  return *((mmapgs2_1_ *)&e_1);
+
+  //  static doublereal e_1[4292]={
+  static mmapgs2_1_ * r= (mmapgs2_1_ *) &e_1;
+  return *r;
 }

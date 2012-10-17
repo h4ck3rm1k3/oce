@@ -1916,5 +1916,6 @@ mlgdrtl_1_& AdvApp2Var_Data::Getmlgdrtl()
 	    .0510811194407819869756124378422272 
 	    };
 
-  return *((mlgdrtl_1_*)&s_e_1);
+  mlgdrtl_1_* r=(mlgdrtl_1_*)&s_e_1;
+  return *r;
 }

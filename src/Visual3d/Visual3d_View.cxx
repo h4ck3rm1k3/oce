@@ -3659,8 +3659,9 @@ Standard_Boolean checkFloat(const Standard_Real value)
 void SetMinMaxValuesCallback(void* Visual3dView)
 {
     Standard_Real xmin, ymin, zmin, xmax, ymax, zmax;
+    Handle(Visual3d_View) * pview= (Handle(Visual3d_View)*) Visual3dView;
 
-    Handle(Visual3d_View) view = (Handle(Visual3d_View)&) Visual3dView;
+    Handle(Visual3d_View) view = *pview;
     view->MinMaxValues(xmin, ymin, zmin, xmax, ymax, zmax);
 
     if (checkFloat(xmin) && checkFloat(ymin) && checkFloat(zmin) &&

@@ -201,6 +201,9 @@ void OpenGl_Text::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
         &objX, &objY, &objZ);
       AWorkspace->RenderText( myString, 0, (float)objX, (float)objY,(float)objZ );
       break;
+    case Aspect_TODT_NORMAL:
+      // TODO
+      break;
     }
   }
 

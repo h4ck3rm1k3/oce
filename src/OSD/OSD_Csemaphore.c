@@ -70,7 +70,10 @@ int osd_signl_(int *);
 int osd_skill_(int *,int *);
 int osd_alarm_(int,void (*)());
 
+
 #endif
+
+extern int kill (__pid_t __pid, int __sig) ;
 
 static void
 osd_signal_(int i )

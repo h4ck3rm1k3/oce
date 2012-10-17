@@ -50,7 +50,7 @@
 #endif
 
 #define STGMGR_ALLOC(size)    Standard::Allocate(size)
-#define STGMGR_FREE(buf,size) Standard::Free((void*&)buf)
+#define STGMGR_FREE(buf,size) Standard::Free(buf)
 #define COLORS_SIZE           256*sizeof(BYTE)
 #define RED                   ((PBYTE)myRedColors)
 #define GREEN                 ((PBYTE)myGreenColors)
@@ -139,7 +139,7 @@ Standard_Boolean AlienImage_GIFAlienData::Read (OSD_File& file)
 #endif
 
   // Read file into memory
-  file.Read ((void*&)pFileBuffer, nFileSize, nReadCount);
+  file.Read (pFileBuffer, nFileSize, nReadCount);
   if (nFileSize != nReadCount) {
     cout << "GIFAlienData::Read() : BAD file size." << endl << flush;
     goto _ExitReadError;

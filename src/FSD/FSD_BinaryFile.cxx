@@ -420,7 +420,8 @@ Storage_Error FSD_BinaryFile::BeginWriteInfoSection()
   ti[1] = 2;
   ti[2] = 3;
   ti[3] = 4;
-  myHeader.testindian = *((int*)ti);
+  int* pti =(int*)ti;
+  myHeader.testindian = *pti;
   if (!fwrite(FSD_BinaryFile::MagicNumber(),
               strlen(FSD_BinaryFile::MagicNumber()),
               1,

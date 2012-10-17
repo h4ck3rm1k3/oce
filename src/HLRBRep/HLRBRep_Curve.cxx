@@ -84,7 +84,9 @@ HLRBRep_Curve::Parameter2d (const Standard_Real P3d) const
   case GeomAbs_BezierCurve:
   case GeomAbs_OtherCurve : 
     break;
-
+  case GeomAbs_BSplineCurve:
+    // TODO
+    break;
   }
   return P3d;
 }
